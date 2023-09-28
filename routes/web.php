@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BusinessCardController;
+use App\Http\Controllers\BusinessCardQrController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,6 +25,9 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::resource('qr', BusinessCardController::class)->only(['store','show']);
+Route::get('qr/{qr}/{type}', BusinessCardQrController::class)->name('qr.code');
 
 Route::middleware([
     'auth:sanctum',
