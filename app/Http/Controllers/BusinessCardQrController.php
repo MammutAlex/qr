@@ -11,7 +11,7 @@ class BusinessCardQrController extends Controller
 {
     public function __invoke(BusinessCard $qr, string $type)
     {
-        if ($type = 'card') {
+        if ($type == 'card') {
             $vcard = new VCard();
             $vcard->addName((string)$qr->last_name, (string)$qr->first_name);
             $vcard->addEmail((string)$qr->email);
